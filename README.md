@@ -1,2 +1,3 @@
-# GrowthSchool_LoadTest
-Load test for the growth school edtech APIs
+Gatling script for Growth School - Java load testing project
+============================================
+
