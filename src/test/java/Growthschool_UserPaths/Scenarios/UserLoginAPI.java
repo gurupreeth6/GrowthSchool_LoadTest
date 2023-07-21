@@ -43,6 +43,6 @@ public class UserLoginAPI {
                         .exec(http("User Signup")
                             .post("/v1/webinarSignups")
                             .header("content-type", "application/json")
-                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"userId\": \"7\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"1\",\"webinarScheduleId\": \"507\",\"timezone\": \"Asia/Calcutta\"}")));
+                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"userId\": \"7\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"107283\",\"timezone\": \"Asia/Calcutta\"}")));
 
 }

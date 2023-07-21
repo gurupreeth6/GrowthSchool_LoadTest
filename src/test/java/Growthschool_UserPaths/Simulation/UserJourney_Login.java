@@ -8,9 +8,10 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 public class UserJourney_Login {
 
     private static final Duration LOW_PAUSE = Duration.ofMillis(1000);
-    private static final Duration HIGH_PAUSE = Duration.ofMillis(10000);
+    private static final Duration HIGH_PAUSE = Duration.ofMinutes(10);
 
     public static ChainBuilder CasualVisit =
-            exec(UserLoginAPI.UserSignup);
+            exec(UserLoginAPI.UserSignup)
+            .pause(HIGH_PAUSE);
 
 }
