@@ -29,7 +29,7 @@ public class TestPopulation {
     public static PopulationBuilder closedModel =
             TestScenario.defaultLoadTest
                     .injectClosed(
-                            constantConcurrentUsers(1).during(5),
-                            rampConcurrentUsers(1).to(10).during(40)
+                            constantConcurrentUsers(100).during(5),
+                            rampConcurrentUsers(100).to(2000).during(40)
                     );
 }
