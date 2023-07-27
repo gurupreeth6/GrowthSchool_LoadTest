@@ -47,8 +47,8 @@ public class UserJourney_Login {
             .pause(LOW_PAUSE)
             .exec(UserLoginAPI.GetGumletUrl5)
             .pause(LOW_PAUSE)
-            .exec(UserLoginAPI.GetThumbnail)
-            .pause(LOW_PAUSE)
+            /*.exec(UserLoginAPI.GetThumbnail)
+            .pause(LOW_PAUSE)*/
             .exec(UserLoginAPI.SendMessages)
             .pause(LOW_PAUSE)
             .exec(UserLoginAPI.GetAllMessages)
