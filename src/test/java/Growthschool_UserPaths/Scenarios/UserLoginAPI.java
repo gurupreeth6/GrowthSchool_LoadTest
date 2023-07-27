@@ -36,13 +36,125 @@ public class UserLoginAPI {
                 return hmap;
             }).iterator();
 
-
     // Signup as a user
     public static ChainBuilder UserSignup =
                     feed(userFeeder)
                         .exec(http("User Signup")
                             .post("/v1/webinarSignups")
                             .header("content-type", "application/json")
-                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"userId\": \"7\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"107283\",\"timezone\": \"Asia/Calcutta\"}")));
+                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"userId\": \"7\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"107283\",\"timezone\": \"Asia/Calcutta\"}"))
+                            .check(jsonPath("$.uuid").saveAs("uuId")));
+
+    // Webinar live signup API
+    public static ChainBuilder WebinarLiveSignup =
+            exec(http("Webinar Live signup")
+                .get("https://webinar.growthschool.io/live/107283?signup=${uuId}"));
+
+    // Get details of Signup
+    public static ChainBuilder GetSignupDetails =
+            exec(http("Get Signup details")
+                .get("/v1/webinarSignups?uuid=${uuId}"));
+
+    //Get Webinar Schedules
+    public static ChainBuilder GetWebinarScheduleDetails =
+            exec(http("Get webinar schedule details")
+                .get("/v1/webinarSchedules/107283"));
+
+    //Airbrake API
+    public static ChainBuilder GetAirbrakeAPI =
+            exec(http("Airbrake API")
+                .get("https://notifier-configs.airbrake.io/2020-06-18/config/427504/config.json?&notifier_name=airbrake-js_2Fbrowser&notifier_version=2.1.7&os=Mozilla_2F5.0_20_Macintosh_3B_20Intel_20Mac_20OS_20X_2010_15_7__20AppleWebKit_2F537.36_20_KHTML_2C_20like_20Gecko__20Chrome_2F112.0.0.0_20Safari_2F537.36&language=JavaScript"));
+
+    //Get Webinar details
+    public static ChainBuilder GetWebinarDetails =
+            exec(http("Get webinar details")
+                .get("/v1/webinars/8")
+                .check(jsonPath("$.videoUuid").saveAs("videoId")));
+
+    //Get static manifest API
+    public static ChainBuilder GetStaticManifest =
+            exec(http("Get manifest API")
+                .get("https://webinar.growthschool.io/static/manifest.json"));
+
+    //Get Webinar Host details
+    public static ChainBuilder GetWebinarHostsDetails =
+            exec(http("Get Webinar Host Details")
+                .get("/v1/webinars/8/hosts"));
+
+    //Get Webinar resources details
+    public static ChainBuilder GetWebinarResourcesDetails =
+            exec(http("Get webinar resources details")
+                .get("/v1/webinars/8/resources"));
+
+    //Get Webinar Metadata
+    public static ChainBuilder GetWebinarMetadata =
+            exec(http("Get Webinar Metadata")
+                .get("/v1/webinars/8/webinarMetadata"));
+    
+    //Get live People graph
+    public static ChainBuilder GetLivePeopleGraph =
+            exec(http("Live People graph API")
+                .get("/v1/livePeopleGraphs?webinarId=8"));
+    
+    //Generate Firebase token for SDK
+    public static ChainBuilder GenerateFirebaseToken =
+            exec(http("Generate Firebase token")
+                .post("/v1/users/generate-firebase-token")
+                .header("content-type", "application/json")
+                .body(StringBody("{\"userEmail\":\"${name}@mailinator.com\"}"))
+                .check(jsonPath("$.message").ofString().is("successfull")));
+
+    //Get the video stream
+    public static ChainBuilder GetVideoStream =
+            exec(http("Get video stream")
+                .get("https://api.growthschool.io/videos/${videoId}/streams")
+                .check(jsonPath("$.gumlet.hls.url").saveAs("gumletUrl"))
+                .check(jsonPath("$.thumbnails.png").saveAs("thumbnailUrl")));
+
+    //Get Gumlet url
+    public static ChainBuilder GetGumletUrl1 =
+            exec(http("Get gumlet url 1")
+                .get("${gumletUrl}"));
+
+    //Get Gumlet url2
+    public static ChainBuilder GetGumletUrl2 =
+            exec(http("Get gumlet url 2")
+                .get("${gumletUrl}".split("/main")[0]+"_0_en_192k.m3u8"));
+
+    //Get Gumlet url3
+    public static ChainBuilder GetGumletUrl3 =
+            exec(http("Get gumlet url 3")
+                .get("${gumletUrl}".split("/main")[0]+"_0_1078p.m3u8"));
+    
+    //Get Gumlet url4
+    public static ChainBuilder GetGumletUrl4 =
+            exec(http("Get gumlet url 4")
+                .get("${gumletUrl}".split("/main")[0]+"_0_en_192k.mp4"));
+
+    //Get Gumlet url3
+    public static ChainBuilder GetGumletUrl5 =
+            exec(http("Get gumlet url 5")
+                .get("${gumletUrl}".split("/main")[0]+"_0_1078p.mp4"));
+
+    //Get the Thumbnail from aws S3
+    /*public static ChainBuilder GetThumbnail =
+            exec(http("Get thumbnail png")
+                .get("${thumbnailUrl}"));*/
+    
+
+    // Send Messages
+    public static ChainBuilder SendMessages =
+                    feed(userFeeder)
+                        .exec(http("Send messages")
+                            .post("/v1/messages/8")
+                            .header("content-type", "application/json")
+                            .body(StringBody("{\"time\":\"00:00:09\",\"name\": \"${name}\",\"text\": \"Hello\"}")));
+
+    // Send Messages
+    public static ChainBuilder GetAllMessages =
+                    feed(userFeeder)
+                        .exec(http("Get all messages")
+                            .get("/v1/messages/all/8")
+                            .header("content-type", "application/json"));
 
 }
