@@ -60,11 +60,6 @@ public class UserLoginAPI {
             exec(http("Get webinar schedule details")
                 .get("/v1/webinarSchedules/107283"));
 
-    //Airbrake API
-    public static ChainBuilder GetAirbrakeAPI =
-            exec(http("Airbrake API")
-                .get("https://notifier-configs.airbrake.io/2020-06-18/config/427504/config.json?&notifier_name=airbrake-js_2Fbrowser&notifier_version=2.1.7&os=Mozilla_2F5.0_20_Macintosh_3B_20Intel_20Mac_20OS_20X_2010_15_7__20AppleWebKit_2F537.36_20_KHTML_2C_20like_20Gecko__20Chrome_2F112.0.0.0_20Safari_2F537.36&language=JavaScript"));
-
     //Get Webinar details
     public static ChainBuilder GetWebinarDetails =
             exec(http("Get webinar details")
