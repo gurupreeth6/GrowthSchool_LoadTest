@@ -30,6 +30,6 @@ public class TestPopulation {
             TestScenario.defaultLoadTest
                     .injectClosed(
                             constantConcurrentUsers(1000).during(5),
-                            rampConcurrentUsers(1000).to(8000).during(40)
+                            rampConcurrentUsers(1000).to(7000).during(40)
                     );
 }
