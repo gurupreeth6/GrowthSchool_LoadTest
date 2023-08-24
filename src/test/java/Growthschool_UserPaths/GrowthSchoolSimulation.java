@@ -14,7 +14,8 @@ public class GrowthSchoolSimulation extends Simulation{
 
     private HttpProtocolBuilder httpProtocol = http
             .baseUrl("https://" +DOMAIN)
-            .authorizationHeader("");
+            .authorizationHeader("")
+            .useAllLocalAddresses();
     {
         if (TEST_TYPE == "INSTANT_USERS") {
             setUp(TestPopulation.instantUsers).protocols(httpProtocol);
