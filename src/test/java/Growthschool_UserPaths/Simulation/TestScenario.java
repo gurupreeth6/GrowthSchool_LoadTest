@@ -7,8 +7,8 @@ import java.time.Duration;
 public class TestScenario {
 
     private static final Duration TEST_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("DURATION", "600")));
-    public static ScenarioBuilder defaultLoadTest =
-            scenario("Default Load Test")
+    public static ScenarioBuilder webinarLoadTest =
+            scenario("Webinar Load Test")
                     .during(TEST_DURATION)
                     .on(
                             randomSwitch()
@@ -16,4 +16,14 @@ public class TestScenario {
                                             Choice.withWeight(100, exec(UserJourney_Login.CasualVisit))
                                     )
                     ); 
+
+        public static ScenarioBuilder defaultLoadTest =
+            scenario("Default Load Test")
+                    .during(TEST_DURATION)
+                    .on(
+                            randomSwitch()
+                                    .on(
+                                            Choice.withWeight(100, exec(UserJourney_Outskill.CasualVisit))
+                                    )
+                    );  
 }
