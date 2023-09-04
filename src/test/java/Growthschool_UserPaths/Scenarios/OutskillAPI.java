@@ -69,5 +69,49 @@ public class OutskillAPI {
                 .post("/v1/webinarFeedbacks")
                 .header("content-type", "application/json")
                 .body(StringBody("{\"satisfactionScore\": \"1\",\"suggestionInputByUser\": \"Great Content\",\"suggestionsSelected\": [\"Technical Issue\"],\"type\": \"WHILE_LEAVING\",\"webinarSignupId\": \"389622\",\"webinarScheduleId\": \"107283\",\"webinarId\": \"8\"}")));
+
+
+    //Get Audio Books topic
+    public static ChainBuilder GetAudioBooksTopic =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get Audio books Topic")
+                .get("/v1/audio-books/topics"));
+
+    
+    //Get Audio Books topic
+    public static ChainBuilder GetFeaturedAudioBooks =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get Featured Audio books")
+                .get("/v1/audio-books/featured"));
+
+    //Get All Audio Books
+    public static ChainBuilder GetAllAudioBooks =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get All Audio books")
+                .get("/v1/audio-books"));
+
+    //Get Guide topic
+    public static ChainBuilder GetGuideTopic =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get Guide Topic")
+                .get("/v1/guides/topics"));
+
+    //Get Featured Guides
+    public static ChainBuilder GetFeaturedGuides =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get Featured Guides")
+                .get("/v1/guides/featured"));
+
+    //Get All Guides
+    public static ChainBuilder GetAllGuides =
+        exec(addCookie(Cookie("connect.sid", "s%3Ax23lch1Tf8IEse9-y3JY-L9iTM3Wiu7h.Se%2BcRy0RiESZd9WesvgKBlGob3pU%2FTnJxHtA2qfXkWk").withDomain("growthschool.io").withPath("/")))
+        
+                .exec(http("Get All Guides")
+                .get("/v1/guides/allguides"));
     
 }
