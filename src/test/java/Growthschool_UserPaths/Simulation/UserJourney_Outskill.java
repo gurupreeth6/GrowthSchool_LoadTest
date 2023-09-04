@@ -11,6 +11,6 @@ public class UserJourney_Outskill {
     private static final Duration HIGH_PAUSE = Duration.ofMinutes(10);
 
     public static ChainBuilder CasualVisit =
-            exec(OutskillAPI.BroadcastingWorkshop, OutskillAPI.WorkshopOfTheDay, OutskillAPI.TopicsAndMentor, OutskillAPI.UpcomingWorkshop, OutskillAPI.UpcomingWorkshop2, OutskillAPI.GetRecentFeedback, OutskillAPI.SubmitFeedback)
+            exec(OutskillAPI.BroadcastingWorkshop, OutskillAPI.WorkshopOfTheDay, OutskillAPI.TopicsAndMentor, OutskillAPI.UpcomingWorkshop, OutskillAPI.UpcomingWorkshop2, OutskillAPI.GetRecentFeedback, OutskillAPI.SubmitFeedback, OutskillAPI.GetAudioBooksTopic, OutskillAPI.GetFeaturedAudioBooks, OutskillAPI.GetAllAudioBooks, OutskillAPI.GetGuideTopic, OutskillAPI.GetFeaturedGuides, OutskillAPI.GetAllGuides)
             .pause(HIGH_PAUSE);
 }
