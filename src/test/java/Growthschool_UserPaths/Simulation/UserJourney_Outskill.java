@@ -8,9 +8,9 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 public class UserJourney_Outskill {
 
     private static final Duration LOW_PAUSE = Duration.ofMillis(1000);
-    private static final Duration HIGH_PAUSE = Duration.ofMinutes(10);
+    private static final Duration HIGH_PAUSE = Duration.ofMinutes(1);
 
     public static ChainBuilder CasualVisit =
-            exec(OutskillAPI.BroadcastingWorkshop, OutskillAPI.WorkshopOfTheDay, OutskillAPI.TopicsAndMentor, OutskillAPI.UpcomingWorkshop, OutskillAPI.UpcomingWorkshop2, OutskillAPI.GetRecentFeedback, OutskillAPI.SubmitFeedback, OutskillAPI.GetAudioBooksTopic, OutskillAPI.GetFeaturedAudioBooks, OutskillAPI.GetAllAudioBooks, OutskillAPI.GetGuideTopic, OutskillAPI.GetFeaturedGuides, OutskillAPI.GetAllGuides)
+            exec(OutskillAPI.TestWaitlist)
             .pause(HIGH_PAUSE);
 }
