@@ -113,5 +113,10 @@ public class OutskillAPI {
         
                 .exec(http("Get All Guides")
                 .get("/v1/guides/allguides"));
+
+    // Webinar live signup API
+    public static ChainBuilder TestWaitlist =
+            exec(http("Test Waitlist")
+                .get("/v1/test-waitlist"));
     
 }
