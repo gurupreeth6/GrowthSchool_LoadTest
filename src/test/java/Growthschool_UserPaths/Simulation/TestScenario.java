@@ -6,7 +6,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import java.time.Duration;
 public class TestScenario {
 
-    private static final Duration TEST_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("DURATION", "90")));
+    private static final Duration TEST_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("DURATION", "30")));
     public static ScenarioBuilder webinarLoadTest =
             scenario("Webinar Load Test")
                     .during(TEST_DURATION)
