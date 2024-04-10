@@ -4,7 +4,7 @@ import io.gatling.javaapi.core.PopulationBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import java.time.Duration;
 public class TestPopulation {
-    private static final int USER_COUNT = Integer.parseInt(System.getProperty("USERS", "250"));
+    private static final int USER_COUNT = Integer.parseInt(System.getProperty("USERS", "10"));
     private static final Duration RAMP_DURATION = Duration.ofMinutes(Integer.parseInt(System.getProperty("RAMP_DURATION", "1")));
 
     public static PopulationBuilder instantUsers =
