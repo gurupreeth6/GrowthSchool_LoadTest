@@ -17,7 +17,7 @@ public class TestScenario {
                                     )
                     ); 
 
-        public static ScenarioBuilder defaultLoadTest =
+        public static ScenarioBuilder outskillLoadTest =
             scenario("Default Load Test")
                     .during(TEST_DURATION)
                     .on(
@@ -25,5 +25,15 @@ public class TestScenario {
                                     .on(
                                             Choice.withWeight(100, exec(UserJourney_Outskill.CasualVisit))
                                     )
-                    );  
+                    );
+
+    public static ScenarioBuilder defaultLoadTest =
+            scenario("Default Load Test")
+                    .during(TEST_DURATION)
+                    .on(
+                            randomSwitch()
+                                    .on(
+                                            Choice.withWeight(100, exec(UserJourney_Payment.CasualVisit))
+                                    )
+                    );
 }
