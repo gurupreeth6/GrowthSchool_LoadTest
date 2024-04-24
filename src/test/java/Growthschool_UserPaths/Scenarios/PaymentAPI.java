@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.http;
 
-public class UserLoginAPI {
+public class PaymentAPI {
 
     private static Iterator<Map<String, Object>> userFeeder =
             Stream.generate((Supplier<Map<String,Object>>) () -> {
@@ -36,18 +36,17 @@ public class UserLoginAPI {
                 return hmap;
             }).iterator();
 
-    // Signup as a user
-    public static ChainBuilder UserSignup =
-                    feed(userFeeder)
-                        .exec(http("User Signup")
-                            .post("/v1/webinarSignups")
-                            .header("content-type", "application/json")
-                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"userId\": \"7\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"114649\",\"timezone\": \"Asia/Calcutta\"}"))
-                            .check(jsonPath("$.uuid").saveAs("uuId")));
-
     // Payment Link API
     public static ChainBuilder PaymentLink =
             exec(http("Payment Link API")
                 .get("https://staging-payments.growthschool.io/pay/9/16acf603-5c43-41ae-bce4-82bad654801d/INR"));
+
+    // Payment Lead
+    public static ChainBuilder PaymentLead =
+                    feed(userFeeder)
+                        .exec(http("Payment Leads")
+                            .post("https://staging-payments.growthschool.io/leads")
+                            .header("content-type", "application/json")
+                            .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"16acf603-5c43-41ae-bce4-82bad654801d\",\"status\": \"LEAD\",\"isPaymentLinkExpired\": false,\"currency\": \"INR\"}"));
 
 }
