@@ -7,8 +7,8 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 
 public class UserJourney_Payment {
 
-    private static final Duration LOW_PAUSE = Duration.ofMillis(1000);
-    private static final Duration HIGH_PAUSE = Duration.ofMinutes(1);
+    // private static final Duration LOW_PAUSE = Duration.ofMillis(1000);
+    private static final Duration HIGH_PAUSE = Duration.ofSeconds(15);
 
     public static ChainBuilder CasualVisit =
             exec(PaymentAPI.PaymentLink)
