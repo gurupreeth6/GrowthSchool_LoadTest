@@ -39,13 +39,13 @@ public class PaymentAPI {
     // Payment Link API
     public static ChainBuilder PaymentLink =
             exec(http("Payment Link API")
-                .get("https://staging-payments.growthschool.io/pay/9/16acf603-5c43-41ae-bce4-82bad654801d/INR"));
+                .get("/pay/9/16acf603-5c43-41ae-bce4-82bad654801d/INR"));
 
     // Payment Lead
     public static ChainBuilder PaymentLead =
                     feed(userFeeder)
                         .exec(http("Payment Leads")
-                            .post("https://staging-payments.growthschool.io/leads")
+                            .post("/leads")
                             .header("content-type", "application/json")
                             .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"16acf603-5c43-41ae-bce4-82bad654801d\",\"status\": \"LEAD\",\"isPaymentLinkExpired\": false,\"currency\": \"INR\"}")));
 
