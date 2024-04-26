@@ -29,10 +29,12 @@ public class PaymentAPI {
 
                 String phoneNumber = df3.format(num1) + df3.format(num2) + df4.format(num3);
                 String name = uuid.substring(0, Math.min(8, uuid.length()));
+                String code = uuid.substring(0, Math.min(6, uuid.length()));
 
                 HashMap<String,Object> hmap = new HashMap<String,Object>();
                 hmap.put("phoneNumber", phoneNumber);
                 hmap.put("name", name);
+                hmap.put("code", code);
                 return hmap;
             }).iterator();
 
@@ -48,5 +50,19 @@ public class PaymentAPI {
                             .post("/leads")
                             .header("content-type", "application/json")
                             .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"16acf603-5c43-41ae-bce4-82bad654801d\",\"status\": \"LEAD\",\"isPaymentLinkExpired\": false,\"currency\": \"INR\"}")));
+    
+    public static ChainBuilder DiscountCodes =
+            feed(userFeeder)
+                .exec(http("Discount Codes")
+                    .post("/discount-codes")
+                    .header("content-type", "application/json")
+                    .body(StringBody("{\"code\": \"${code}\",\"userEmail\": \"${name}@mailinator.com\",\"productIds\": [16],\"paymentLinkId\": \"16acf603-5c43-41ae-bce4-82bad654801d\",\"currency\": \"INR\"}")));
+    
+    public static ChainBuilder Orders =
+            feed(userFeeder)
+                .exec(http("Orders API")
+                    .post("/orders")
+                    .header("content-type", "application/json")
+                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"16acf603-5c43-41ae-bce4-82bad654801d\",\"productIds\": [16],\"gstin\": \"\",\"userPinCode\": \"\",\"userState\": \"\",\"userCity\": \"\",\"userAddress\": \"\",\"discountCode\": \"\",\"gateway\": \"RZP\",\"currency\": \"INR\"}")));
 
 }
