@@ -8,15 +8,15 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 public class UserJourney_Payment {
 
     private static final Duration LOW_PAUSE = Duration.ofMillis(2000);
-    private static final Duration HIGH_PAUSE = Duration.ofSeconds(15);
+    private static final Duration HIGH_PAUSE = Duration.ofMinutes(5);
 
     public static ChainBuilder CasualVisit =
-            exec(PaymentAPI.PaymentLink,PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout,PaymentAPI.DiscountCodes,PaymentAPI.Orders)
-            /*.pause(LOW_PAUSE)
+            exec(PaymentAPI.PaymentLink)
+            .pause(LOW_PAUSE)
             .exec(PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout)
             .pause(LOW_PAUSE)
             .exec(PaymentAPI.DiscountCodes)
             .pause(LOW_PAUSE)
-            .exec(PaymentAPI.Orders)*/
+            .exec(PaymentAPI.Orders)
             .pause(HIGH_PAUSE);
 }
