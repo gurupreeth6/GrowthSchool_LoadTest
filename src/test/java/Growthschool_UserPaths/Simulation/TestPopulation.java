@@ -29,6 +29,6 @@ public class TestPopulation {
     public static PopulationBuilder closedModel =
             TestScenario.defaultLoadTest
                     .injectClosed(
-                            constantConcurrentUsers(USER_COUNT).during(1)
+                            rampConcurrentUsers(0).to(USER_COUNT).during(10)
                     );
 }
