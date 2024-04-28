@@ -49,7 +49,7 @@ public class PaymentAPI {
                 .exec(http("Payment Leads")
                     .post("/leads")
                     .header("content-type", "application/json")
-                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"status\": \"LEAD\",\"isPaymentLinkExpired\": false,\"currency\": \"INR\"}")));
+                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"test${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"status\": \"LEAD\",\"isPaymentLinkExpired\": false,\"currency\": \"INR\"}")));
 
     
     public static ChainBuilder PaymentCheckout =
@@ -57,19 +57,19 @@ public class PaymentAPI {
                 .exec(http("Payment Checkout")
                     .post("/pay/checkout/1/25ff3982-035d-4728-9ba6-bb752cf49a48/INR")
                     .header("content-type", "application/json")
-                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"whatsappComm\": \"\",\"userGstIn\": \"\",\"userPinCode\": \"\",\"userState\": \"\",\"userCity\": \"\",\"userAddress\": \"\"}")));
+                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"test${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"whatsappComm\": \"\",\"userGstIn\": \"\",\"userPinCode\": \"\",\"userState\": \"\",\"userCity\": \"\",\"userAddress\": \"\"}")));
     
     public static ChainBuilder DiscountCodes =
             feed(userFeeder)
                 .exec(http("Discount Codes")
                     .post("/discount-codes")
                     .header("content-type", "application/json")
-                    .body(StringBody("{\"code\": \"LOADTEST\",\"userEmail\": \"${name}@mailinator.com\",\"productIds\": [1],\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"currency\": \"INR\"}")));
+                    .body(StringBody("{\"code\": \"LOADTEST\",\"userEmail\": \"test${name}@mailinator.com\",\"productIds\": [1],\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"currency\": \"INR\"}")));
     
     public static ChainBuilder Orders =
             feed(userFeeder)
                 .exec(http("Orders API")
                     .post("/orders")
                     .header("content-type", "application/json")
-                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"productIds\": [1],\"gstin\": \"\",\"userPinCode\": \"\",\"userState\": \"\",\"userCity\": \"\",\"userAddress\": \"\",\"discountCode\": \"LOADTEST\",\"gateway\": \"RZP\",\"currency\": \"INR\"}")));
+                    .body(StringBody("{\"userName\": \"${name}\",\"userEmail\": \"test${name}@mailinator.com\",\"userPhone\": \"${phoneNumber}\",\"paymentLinkId\": \"25ff3982-035d-4728-9ba6-bb752cf49a48\",\"productIds\": [1],\"gstin\": \"\",\"userPinCode\": \"\",\"userState\": \"\",\"userCity\": \"\",\"userAddress\": \"\",\"discountCode\": \"LOADTEST\",\"gateway\": \"RZP\",\"currency\": \"INR\"}")));
 }
