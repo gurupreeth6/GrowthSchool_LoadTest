@@ -12,9 +12,9 @@ public class UserJourney_Payment {
 
     public static ChainBuilder CasualVisit =
             exec(PaymentAPI.PaymentLink)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.DiscountCodes)
-            .pause(HIGH_PAUSE);
+            // .pause(LOW_PAUSE)
+            // .exec(PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout)
+            // .pause(LOW_PAUSE)
+            // .exec(PaymentAPI.DiscountCodes)
+            // .pause(HIGH_PAUSE);
 }
