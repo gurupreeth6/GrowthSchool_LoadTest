@@ -16,7 +16,5 @@ public class UserJourney_Payment {
             .exec(PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout)
             .pause(LOW_PAUSE)
             .exec(PaymentAPI.DiscountCodes)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.Orders)
             .pause(HIGH_PAUSE);
 }
