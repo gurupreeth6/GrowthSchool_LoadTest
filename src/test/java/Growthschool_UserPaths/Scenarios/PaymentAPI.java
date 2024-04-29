@@ -41,7 +41,7 @@ public class PaymentAPI {
     // Payment Link API
     public static ChainBuilder PaymentLink =
             exec(http("Payment Link API")
-                .get("/pay/1/2b9c7311-83bb-418f-ae82-8b879db026d7/INR"));
+                .get("/pay/9/ff7e6ed3-ed60-491d-9584-1d45a3dd95c5/INR"));
 
     // Payment Lead
     public static ChainBuilder PaymentLead =
