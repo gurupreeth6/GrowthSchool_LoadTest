@@ -11,12 +11,6 @@ public class UserJourney_Payment {
     private static final Duration HIGH_PAUSE = Duration.ofMinutes(5);
 
     public static ChainBuilder CasualVisit =
-            exec(PaymentAPI.PaymentLink)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.PaymentLead,PaymentAPI.PaymentCheckout)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.DiscountCodes)
-            .pause(LOW_PAUSE)
-            .exec(PaymentAPI.Orders)
+            exec(PaymentAPI.Orders)
             .pause(HIGH_PAUSE);
 }
