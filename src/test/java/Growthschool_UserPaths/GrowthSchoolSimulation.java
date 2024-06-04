@@ -10,7 +10,7 @@ import Growthschool_UserPaths.Simulation.*;
 public class GrowthSchoolSimulation extends Simulation{
 
     private static final String TEST_TYPE = System.getProperty("TEST_TYPE", "CLOSED_MODEL");
-    private static final String DOMAIN = "payments.growthschool.io";
+    private static final String DOMAIN = "serv-outskill-prod.growthschool.io";
 
     private HttpProtocolBuilder httpProtocol = http
             .baseUrl("https://" +DOMAIN)
