@@ -4,8 +4,8 @@ import io.gatling.javaapi.core.PopulationBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import java.time.Duration;
 public class TestPopulation {
-    private static final int USER_COUNT = Integer.parseInt(System.getProperty("USERS", "5"));
-    private static final Duration RAMP_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("RAMP_DURATION", "1")));
+    private static final int USER_COUNT = Integer.parseInt(System.getProperty("USERS", "500"));
+    private static final Duration RAMP_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("RAMP_DURATION", "10")));
 
     public static PopulationBuilder instantUsers =
             TestScenario.defaultLoadTest
@@ -29,6 +29,7 @@ public class TestPopulation {
     public static PopulationBuilder closedModel =
             TestScenario.defaultLoadTest
                     .injectClosed(
-                            rampConcurrentUsers(0).to(USER_COUNT).during(RAMP_DURATION)
+                        constantConcurrentUsers(10).during(1),
+                        rampConcurrentUsers(10).to(USER_COUNT).during(RAMP_DURATION)
                     );
 }
