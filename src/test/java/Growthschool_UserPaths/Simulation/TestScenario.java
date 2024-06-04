@@ -17,7 +17,7 @@ public class TestScenario {
                                     )
                     ); 
 
-        public static ScenarioBuilder outskillLoadTest =
+        public static ScenarioBuilder defaultLoadTest =
             scenario("Default Load Test")
                     .during(TEST_DURATION)
                     .on(
@@ -27,7 +27,7 @@ public class TestScenario {
                                     )
                     );
 
-    public static ScenarioBuilder defaultLoadTest =
+    public static ScenarioBuilder paymentLoadTest =
             scenario("Default Load Test")
                     .during(TEST_DURATION)
                     .on(
