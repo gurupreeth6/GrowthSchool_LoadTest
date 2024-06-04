@@ -7,7 +7,7 @@ import java.time.Duration;
 public class TestScenario {
 
     private static final Duration TEST_DURATION = Duration.ofSeconds(Integer.parseInt(System.getProperty("DURATION", "15")));
-    public static ScenarioBuilder webinarLoadTest =
+    public static ScenarioBuilder defaultLoadTest =
             scenario("Webinar Load Test")
                     .during(TEST_DURATION)
                     .on(
@@ -17,7 +17,7 @@ public class TestScenario {
                                     )
                     ); 
 
-        public static ScenarioBuilder defaultLoadTest =
+        public static ScenarioBuilder outskillLoadTest =
             scenario("Default Load Test")
                     .during(TEST_DURATION)
                     .on(
