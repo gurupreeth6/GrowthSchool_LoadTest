@@ -42,13 +42,13 @@ public class UserLoginAPI {
                         .exec(http("User Signup")
                             .post("/v1/webinarSignups")
                             .header("content-type", "application/json")
-                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"213730\",\"timezone\": \"Asia/Calcutta\"}"))
+                            .body(StringBody("{\"name\": \"${name}\",\"email\": \"${name}@mailinator.com\",\"phone\": \"${phoneNumber}\",\"webinarId\": \"8\",\"webinarScheduleId\": \"213731\",\"timezone\": \"Asia/Calcutta\"}"))
                             .check(jsonPath("$.uuid").saveAs("uuId")));
 
     // Webinar live signup API
     public static ChainBuilder WebinarLiveSignup =
             exec(http("Webinar Live signup")
-                .get("https://webinar.growthschool.io/live/213730?signup=${uuId}"));
+                .get("https://webinar.growthschool.io/live/213731?signup=${uuId}"));
 
     // Get details of Signup
     public static ChainBuilder GetSignupDetails =
@@ -58,7 +58,7 @@ public class UserLoginAPI {
     //Get Webinar Schedules
     public static ChainBuilder GetWebinarScheduleDetails =
             exec(http("Get webinar schedule details")
-                .get("/v1/webinarSchedules/213730"));
+                .get("/v1/webinarSchedules/213731"));
 
     //Get Webinar details
     public static ChainBuilder GetWebinarDetails =
