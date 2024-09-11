@@ -13,7 +13,7 @@ public class TestScenario {
                     .on(
                             randomSwitch()
                                     .on(
-                                            Choice.withWeight(100, exec(UserJourney_Login.CasualVisit))
+                                            Choice.withWeight(100, exec(UserJourney_Outskill_NewAPI.CasualVisit))
                                     )
                     ); 
 
