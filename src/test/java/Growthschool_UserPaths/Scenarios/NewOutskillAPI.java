@@ -129,6 +129,6 @@ public class NewOutskillAPI {
 
     public static ChainBuilder WebinarSignups =
         exec(http("Webinar Signups")
-                .post("http://serv-outskill-api-staging.growthschool.io/v1/webinarSignups")
+                .post("https://outskill-api.growthschool.io/v1/webinarSignups")
                 .body(StringBody("{\"name\":\"${name}\",\"email\":\"${name}@mailinator.com\",\"phone\":\"91${phoneNumber}\",\"webinarId\":2314,\"webinarScheduleId\":${scheduleId},\"timezone\":\"${timezone}\"}")));
 }
